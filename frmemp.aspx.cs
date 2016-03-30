@@ -20,35 +20,53 @@ public partial class company_Default : System.Web.UI.Page
             }
             DataList1.DataSource = ar;
             DataList1.DataBind();
-            bind("%");
-
         }
+        bind("%");
 
-    }
-    protected void LinkButton1_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("frmaddemp.aspx");
     }
     private void bind(string s)
     {
         nsfollow.clsemp obj = new nsfollow.clsemp();
-        GridView1.DataSource = obj.srcemp(Convert.ToInt32(Session["ccod"]), s);
+        GridView1.DataSource = obj.srcempfol(Convert.ToInt32(Session["ccod"]), s,Convert.ToInt32(Session["cod"]));
         GridView1.DataBind();
     }
 
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        nsfollow.clsemp obj = new nsfollow.clsemp();
-        nsfollow.clsempprp objprp = new nsfollow.clsempprp();
-        objprp.p_empcod = Convert.ToInt32(GridView1.DataKeys[e.RowIndex][0]);
-        obj.delemp_rec(objprp);
-        bind("%");      
-
+        Int32 a = Convert.ToInt32(GridView1.DataKeys[e.RowIndex][1]);
+        nsfollow.clsfol obj = new nsfollow.clsfol();
+        nsfollow.clsfolprp objprp = new nsfollow.clsfolprp();
+        if(a==0)
+        {
+            objprp.p_folempcod = Convert.ToInt32(GridView1.DataKeys[e.RowIndex][0]);
+            objprp.p_folfolempcod = Convert.ToInt32(Session["cod"]);
+            obj.savefol_rec(objprp);
+        }
+        else
+        {
+            objprp.p_folempcod = Convert.ToInt32(GridView1.DataKeys[e.RowIndex][0]);
+            objprp.p_folfolempcod = Convert.ToInt32(Session["cod"]);
+            obj.delfol_rec(objprp);
+        }
+        bind("%");
 
     }
 
     protected void DataList1_EditCommand(object source, DataListCommandEventArgs e)
     {
         bind(e.CommandArgument.ToString() + "%");
+    }
+
+    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow) {
+            LinkButton lk = (LinkButton)(e.Row.FindControl("lk"));
+            Int32 sts = Convert.ToInt32(GridView1.DataKeys[e.Row.RowIndex][1]);
+            if (sts == 0)
+                lk.Text = "Follow";
+            else
+                lk.Text = "Unfollow";  
+        }
+
     }
 }

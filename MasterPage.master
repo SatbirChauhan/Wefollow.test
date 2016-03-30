@@ -1,13 +1,13 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="company_MasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="emp_MasterPage" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>WE FOllOW</title>
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="../css/jquery.simplyscroll.css" media="all" type="text/css"/>
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script> 
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script> 
 <script type="text/javascript" src="../js/jquery.simplyscroll.min.js"></script> 
 <script type="text/javascript">
     (function ($) {
@@ -16,6 +16,14 @@
         });
     })(jQuery);
 </script>
+    <style type="text/css">
+      
+        .auto-style1 {
+            margin: 0 auto;
+            width: 1187px;
+        }
+      
+        </style>
 </head>
 
 <body>
@@ -27,7 +35,7 @@
     <div class="content-center">
       <div class="main-header">
         <div class="logo"><a href="#"><img src="../images/logo.png" border="0" /></a></div>
-        <div class="header-login"> <asp:LinkButton ID="sgnout" runat="server" Text="Signout" CausesValidation="false" OnClick="sgnout_Click" CssClass="login"></asp:LinkButton> <a class="login" style="visibility:hidden"></a>
+        <div class="header-login"> <asp:LinkButton ID="sgnout" CausesValidation="false" runat="server" Text="Signout" OnClick="sgnout_Click" CssClass="login"></asp:LinkButton> 
           <div class="clearfix"></div>
         </div>
         <div class="clearfix"></div>
@@ -37,31 +45,56 @@
   <!--header-end--> 
   <!--banner-part-->
   <div class="banner-part">
-    <div class="content-center">
-      <div class="banner-left">
-        <div class="frist-user"> <a href="#" class="user"><img src="../images/online-usrer.png" border="0" /></a> <a class="location"><img src="../images/location-co.png" border="0" /></a> </div>
-        <div class="second-user"> <a href="#" class="user"><img src="../images/user2.png" border="0" /></a> <a class="location"><img src="../images/location-co.png" border="0" /></a> </div>
+    <div class="auto-style1">
+      <div class="empbannerleft">
+
+          &nbsp;</div>
+      <div class="empmascenter">
+          <div>
+            
+             
+              <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+          </div>
+          <div>
+              
+              <br />
+              <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="findemp_rec" TypeName="nsfollow.clsemp">
+                  <SelectParameters>
+                      <asp:SessionParameter Name="empcod" SessionField="cod" Type="Int32" />
+                  </SelectParameters>
+              </asp:ObjectDataSource>
+          </div>
       </div>
-      <div class="banner-center">
-       
-          <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
-      </div>
-      
-          <div class="content-right">
+        
+   <div class="prof">
+       <asp:DataList ID="DataList1" runat="server" DataSourceID="ObjectDataSource1">
+           <ItemTemplate>
+              <table><tr><td><img src="../emppics/<%#Eval("p_empusrcod") %><%#Eval("p_emppic") %>" height="150px" width="150px" class="profimg" /> </td></tr>
+                  <tr><td><h3><%#Eval("p_empnam") %></h3></td></tr>
+                  <tr><td><b><i><%#Eval("p_empjobtit") %></i></b></td></tr>
+                  <tr><td></td></tr>
+              </table>
+           </ItemTemplate>
+
+       </asp:DataList>
+        </div>
+        <div class="empbannerright">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div class="content-right">
             	<!--  side bar div -->
             	<div class="side_bar">
                 	<ul>
-                    <li><a href="frmemp.aspx">Your Employees</a></li>
-                    <li><a href="frmaddemp.aspx">Add Employees</a></li>
-                    <li><a href="Changepwd.aspx">Change Password</a></li>
+                    <li><a href="frmdshbrd.aspx">Dashboard</a></li>
+                    <li><a href="frmgrp.aspx">Groups</a></li>
+                    <li><a href="frmemp.aspx">Employees</a></li>
 
                     </ul>
                 </div>
                 <!--  side bar div -->
         
     </div>
-              
-   
+      
+    </div>
+      
   </div>
   <!--banner-end--> 
   <!--body-wrapper-->
@@ -69,18 +102,18 @@
   </div>
   <!--body-wrapper-end-->
     <!--footer-->
-      <div class="footer">
-        <div class="content-center">
-          <div class="copyright">
-              <%--Copyright © 2015 CS Soft Solutions Pvt. Ltd, All rights reserved.--%>
-
-          </div>
-        </div>
-      </div>
+      
   <!--footer-end-->
 </div>
+        <div class="footer">
+        
+          <div class="copyright">
+              <%--Copyright © 2014 WeFollow, All rights reserved.--%> 
+
+          </div>
+
+      </div>
 <!--wrapper-end--> 
-        </form>
+    </form>
 </body>
 </html>
-

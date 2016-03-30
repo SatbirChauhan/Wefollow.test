@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/company/MasterPage2.master" AutoEventWireup="true" CodeFile="frmemp.aspx.cs" Inherits="company_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/emp/MasterPage.master" AutoEventWireup="true" CodeFile="frmemp.aspx.cs" Inherits="company_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <%--<form action="frmemp.aspx" runat="server" id="empform">--%>
-    <%--<div class="login-form">--%>
-        <div>
+    <div>
             <h3>Search Employees</h3>
             </div>
     <br />
@@ -21,26 +20,27 @@
         </asp:DataList>
                 </div>
             </div>
-          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView1_RowDeleting" DataKeyNames="empcod">
+    <div class="strtdivgrpdet">
+          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView1_RowDeleting" DataKeyNames="empcod,sts" OnRowDataBound="GridView1_RowDataBound">
               <Columns>
                   <asp:TemplateField HeaderText="Search Results">
                       <ItemTemplate>
-                          <table class="">
+                          <table class="wrapper">
                               <tr>
-                                  <td rowspan="5"><img src="../emppics/<%#Eval("empusrcod") %><%#Eval("emppic") %>" class="manpic" /></td>
-                                  <td><h3 class="personname">Name:&nbsp;&nbsp;<%#Eval("empnam") %></h3></td>
+                                  <td rowspan="5"><img src="../emppics/<%#Eval("empusrcod") %><%#Eval("emppic") %>" height="150" width="100" /></td>
+                                  <td><h3><%#Eval("empnam") %></h3></td>
                               </tr>
                               <tr>
-                                  <td><b>Designation:<i><%#Eval("empjobtit") %></i></b></td>
+                                  <td><b><i><%#Eval("empjobtit") %></i></b></td>
                               </tr>
                               <tr>
-                                  <td>Email:&nbsp;&nbsp;&nbsp;&nbsp;<%#Eval("usreml") %></td>
+                                  <td><%#Eval("usreml") %></td>
                               </tr>
                               <tr>
-                                  <td>Create Date:&nbsp;&nbsp;<%#Eval("usrcrtdat","{0:d}") %></td>
+                                  <td><%#Eval("usrcrtdat","{0,1}") %></td>
                               </tr>
                               <tr>
-                                  <td><asp:LinkButton ID="lk" runat="server" CssClass="empgvlk" Text="remove" CommandName="delete"></asp:LinkButton></td>
+                                  <td><asp:LinkButton ID="lk" runat="server" CssClass="empgvlk" CommandName="delete"></asp:LinkButton></td>
                               </tr>
                           </table>
                       </ItemTemplate>
@@ -52,9 +52,9 @@
         
         <br />
         
-        <div><asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Add New Employees</asp:LinkButton> </div>
-      
-   <%-- </div>--%>
+        <div> </div>
+        
+    </div>
         <%--</form>--%>
 </asp:Content>
 
