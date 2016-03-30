@@ -1,0 +1,78 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>WE FOllOW</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/jquery.simplyscroll.css" media="all" type="text/css"/>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script> 
+<script type="text/javascript" src="js/jquery.simplyscroll.min.js"></script> 
+<script type="text/javascript">
+    (function ($) {
+        $(function () {
+            $("#scroller").simplyScroll();
+        });
+    })(jQuery);
+</script>
+</head>
+
+<body>
+<!--wrapper-start-->
+<div class="wrapper"> 
+  <!--header-->
+  <div class="header">
+    <div class="content-center">
+      <div class="main-header">
+        <div class="logo"><a href="#"><img src="images/logo.png" border="0" /></a></div>
+        <div class="header-login"> <a class="login" href="login.aspx">Login</a> <a class="sign-up" href="index.aspx">sign me up</a>
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <!--header-end--> 
+  <!--banner-part-->
+  <div class="banner-part">
+    <div class="content-center">
+      <div class="banner-left">
+        <div class="frist-user"> <a href="#" class="user"><img src="images/online-usrer.png" border="0" /></a> <a class="location"><img src="images/location-co.png" border="0" /></a> </div>
+        <div class="second-user"> <a href="#" class="user"><img src="images/user2.png" border="0" /></a> <a class="location"><img src="images/location-co.png" border="0" /></a> </div>
+      </div>
+      <div class="banner-center">
+        <h1>We follow is a Private Social<br />
+          Network for Your Company</h1>
+        <p>Collaborate securely across departments, geographies, content and business applications.</p>
+          <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+      </div>
+        
+      <div class="banner-right">
+        <div class="frist-user"> <a href="#" class="user"><img src="images/user3.png" border="0" /></a> <a class="location"><img src="images/location-co.png"  border="0"/></a> </div>
+        <div class="second-user"> <a href="#" class="user"><img src="images/user4.png"  border="0"/></a> <a class="location"><img src="images/location-co.png"  border="0"/></a> </div>
+      </div>
+        
+    </div>
+      
+  </div>
+  <!--banner-end--> 
+  <!--body-wrapper-->
+  <div class="body-wrapper">
+  </div>
+  <!--body-wrapper-end-->
+    <!--footer-->
+      <div class="footer">
+        <div class="content-center">
+          <div class="copyright">
+              <%--Copyright © 2015 CS Soft Solutions Pvt. Ltd, All rights reserved.--%>
+
+          </div>
+        </div>
+      </div>
+  <!--footer-end-->
+</div>
+<!--wrapper-end--> 
+</body>
+</html>
