@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="company_MasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage2.master.cs" Inherits="company_MasterPage2" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -16,6 +16,11 @@
         });
     })(jQuery);
 </script>
+    <style type="text/css">
+        .auto-style1 {
+            width: 341px;
+        }
+    </style>
 </head>
 
 <body>
@@ -44,24 +49,25 @@
       </div>
       <div class="banner-center">
        
-          <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+          <div >
+              <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+          </div>
       </div>
-      
-          <div class="content-right">
+         <div class="content-right">
             	<!--  side bar div -->
             	<div class="side_bar">
                 	<ul>
                     <li><a href="frmemp.aspx">Your Employees</a></li>
                     <li><a href="frmaddemp.aspx">Add Employees</a></li>
                     <li><a href="Changepwd.aspx">Change Password</a></li>
-
                     </ul>
                 </div>
                 <!--  side bar div -->
         
     </div>
-              
-   
+      <div class="banner-right">
+      </div>
+    </div>
   </div>
   <!--banner-end--> 
   <!--body-wrapper-->
@@ -80,7 +86,8 @@
   <!--footer-end-->
 </div>
 <!--wrapper-end--> 
-        </form>
+    </form>
 </body>
 </html>
+
 
